@@ -1,14 +1,19 @@
 package com.jobassignmentproject.NetworkLayer
 
-import com.jobassignmentproject.DataLayer.Gemini.GeminiRequest
-import com.jobassignmentproject.DataLayer.Gemini.GeminiResponse
-import retrofit2.http.Body
-import retrofit2.http.Headers
-import retrofit2.http.POST
+
+import com.jobassignmentproject.DataLayer.OpenWeather.WeatherResponse
+import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Query
 
 interface ApiService {
 
-    @Headers("Authorization: Bearer YOUR_GEMINI_API_KEY")
-    @POST("/v1/models/gemini-pro:generateText")
-    suspend fun summarizeText(@Body request: GeminiRequest): GeminiResponse
+
+
+    @GET("weather")
+    suspend fun getCurrentWeather(
+        @Query("q") city: String,
+        @Query("appid") apiKey: String,
+    ): WeatherResponse
+
 }

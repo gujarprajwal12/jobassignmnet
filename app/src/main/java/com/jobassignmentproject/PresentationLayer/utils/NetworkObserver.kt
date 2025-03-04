@@ -45,7 +45,10 @@ object NetworkObserver {
     }
 
     fun unregister() {
-        connectivityManager.unregisterNetworkCallback(networkCallback)
+        if (::connectivityManager.isInitialized) {
+            connectivityManager.unregisterNetworkCallback(networkCallback)
+        }
     }
+
 }
 

@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.jobassignmentproject"
-        minSdk = 24
+        minSdk = 28
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -52,6 +52,9 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
+    implementation(libs.androidx.annotation)
+    implementation(libs.lifecycle.livedata.ktx)
+    implementation(libs.lifecycle.viewmodel.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -77,5 +80,9 @@ dependencies {
     implementation(libs.coil)
 
     implementation(libs.timber)
+
+    // auth
+
+    implementation ("androidx.biometric:biometric:1.2.0-alpha03")
 
 }

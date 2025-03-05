@@ -1,5 +1,5 @@
 [versions]
-agp = "8.8.0"
+agp = "8.9.0"
 kotlin = "1.9.24"
 coreKtx = "1.15.0"
 junit = "4.13.2"
@@ -42,6 +42,7 @@ hilt-compiler = "2.44"
 coil = "2.4.0"
 
 timber = "5.0.1"
+annotation = "1.6.0"
 
 
 
@@ -87,6 +88,7 @@ timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
 # Coil
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 
 
 

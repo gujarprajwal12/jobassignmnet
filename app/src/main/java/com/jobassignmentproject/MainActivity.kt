@@ -1,13 +1,16 @@
 package com.jobassignmentproject
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.jobassignmentproject.NetworkLayer.RetrofitInstance
+import com.jobassignmentproject.PresentationLayer.Ui.GoogleAuthScrren.GoogleAuth
 import com.jobassignmentproject.PresentationLayer.Ui.OpenWeather.OpenWeatherSecrren
 import com.jobassignmentproject.PresentationLayer.utils.NetworkObserver
 import com.jobassignmentproject.PresentationLayer.utils.SnackbarUtil
@@ -18,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var connectivityManager: ConnectivityManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +46,14 @@ class MainActivity : AppCompatActivity() {
         binding.btnopenweather.setOnClickListener {
 
             startActivity(Intent(this, OpenWeatherSecrren::class.java))
-            finish()
+      
+
+        }
+
+        binding.btngoogleAuth.setOnClickListener {
+
+            val Auth = Intent(this, GoogleAuth::class.java)
+            startActivity(Auth)
 
         }
     }
@@ -51,8 +61,9 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun initview() {
+        connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-        NetworkObserver.init(this)
+
 
         binding.txtmain.text = "Welcome to the app!"
 

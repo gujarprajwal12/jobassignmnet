@@ -9,6 +9,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.jobassignmentproject.DataLayer.helper.Item
+import com.jobassignmentproject.DomainLayer.ItemAdapter
 import com.jobassignmentproject.NetworkLayer.RetrofitInstance
 import com.jobassignmentproject.PresentationLayer.Ui.GoogleAuthScrren.GoogleAuth
 import com.jobassignmentproject.PresentationLayer.Ui.OpenWeather.OpenWeatherSecrren
@@ -39,6 +43,22 @@ class MainActivity : AppCompatActivity() {
         RetrofitInstance.setToken("")
 
         onClick()
+        recyerview()
+    }
+
+    private fun recyerview() {
+
+        val recyclerView: RecyclerView = binding.recyclerView
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val itemList = listOf(
+            Item("Item 1", "Description 1"),
+            Item("Item 2", "Description 2"),
+            Item("Item 3", "Description 3")
+        )
+
+        recyclerView.adapter = ItemAdapter(itemList)
+
     }
 
     private fun onClick() {
@@ -83,3 +103,4 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+

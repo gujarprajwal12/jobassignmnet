@@ -8,8 +8,6 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-
-
     @GET("weather")
     suspend fun getCurrentWeather(
         @Query("q") city: String,
